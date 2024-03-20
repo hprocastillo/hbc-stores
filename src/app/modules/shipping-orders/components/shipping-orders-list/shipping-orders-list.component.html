@@ -1,0 +1,148 @@
+<div class="container-fluid container-lg pt-3">
+
+  <!-- HEADER -->
+  <div class="card shadow border-0 rounded mb-3 p-2 p-xxl-3">
+    <div class="row">
+
+      <!-- TITLE -->
+      <div class="col-12 col-xl-4 col-xxl-5 d-flex">
+        <img class="img-fluid me-2" src="./assets/images/dashboard/shippingOrders.png" alt="" style="height: 32px">
+        <p class="fs-5 fw-medium mb-0 text-uppercase">Ordenes de envio</p>
+      </div>
+
+      <!-- SEARCH -->
+      <div class="col-7 col-xl-4 col-xxl-4">
+        <input type="text" class="form-control" placeholder="Buscar por número de orden">
+      </div>
+
+      <!-- SEARCH DATE & BUTTONS TOOLS -->
+      <div class="col-5 col-xl-4 col-xxl-3 d-flex">
+
+        <!-- SEARCH DATE -->
+        <input type="date" class="form-control me-2">
+
+        <!-- BTN NEW -->
+        <button type="button" class="btn btn-primary me-2" (click)="getTemplate('NEW')">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+
+        <!-- BTN EXPORT -->
+        <button type="button" class="btn btn-success me-2">
+          <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+        </button>
+
+        <!-- BTN PRINT -->
+        <button type="button" class="btn btn-secondary">
+          <i class="bi bi-printer-fill"></i>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--------------------------------------------->
+  <!------------------- LIST -------------------->
+  <div class="card shadow border-0 rounded p-3">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="table-responsive">
+          <table class="table table-striped text-center">
+            <thead>
+            <tr class="text-nowrap">
+              <th scope="col">#</th>
+              <th scope="col"></th>
+              <th scope="col">ESTADO</th>
+              <th scope="col">NUMERO DE ORDEN</th>
+              <th scope="col">FECHA LIMITE</th>
+              <th scope="col">NOMBRE COMPLETO</th>
+              <th scope="col">DNI</th>
+              <th scope="col">TELEFONO</th>
+              <th scope="col">CORREO ELECTRONICO</th>
+              <th scope="col">DIRECCION</th>
+              <th scope="col">REFERENCIA</th>
+              <th scope="col">DISTRITO</th>
+              <th scope="col">PROVINCIA</th>
+              <th scope="col">FECHA DE REGISTRO</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for (order of listOrders; track order.orderNumber; let i = $index) {
+                <tr class="text-nowrap">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>
+                    <button type="button" class="btn btn-primary btn-sm">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                  </td>
+
+                  @switch (order.state) {
+                    @case ("waiting") {
+                      <td class="bg-secondary text-white">
+                        En espera
+                      </td>
+                    }
+                    @case ("preparing") {
+                      <td class="bg-warning text-dark">
+                        En preparación
+                      </td>
+                    }
+                    @case ("walking") {
+                      <td class="bg-info text-dark">
+                        En camino
+                      </td>
+                    }
+                    @case ("delivered") {
+                      <td class="bg-success text-white">
+                        Entregado
+                      </td>
+                    }
+                    @case ("rejected") {
+                      <td class="bg-danger text-white">
+                        Rechazado
+                      </td>
+                    }
+                  }
+
+                  <td>
+                    {{ order.orderNumber }}
+                  </td>
+                  <td>
+                    {{ order.deadline }}
+                  </td>
+                  <td>
+                    {{ order.fullName }}
+                  </td>
+                  <td>
+                    {{ order.dni }}
+                  </td>
+                  <td>
+                    {{ order.phone }}
+                  </td>
+                  <td>
+                    {{ order.email }}
+                  </td>
+                  <td>
+                    {{ order.address }}
+                  </td>
+                  <td>
+                    {{ order.reference }}
+                  </td>
+                  <td>
+                    {{ order.district }}
+                  </td>
+                  <td>
+                    {{ order.province }}
+                  </td>
+                  <td>
+                    {{ order.createdAt }}
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

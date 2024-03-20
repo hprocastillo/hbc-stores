@@ -1,0 +1,19 @@
+<!-- TEMPLATE - LIST -->
+@if (template === 'LIST') {
+  <app-shipping-orders-list
+    (outTemplate)="getTemplate($event)"
+  ></app-shipping-orders-list>
+}
+
+
+<!-- TEMPLATE - NEW -->
+@if (template === 'NEW') {
+  <app-shipping-orders-new
+    (outTemplate)="getTemplate($event)"
+  ></app-shipping-orders-new>
+}
+
+<!-- TEMPLATE - UPDATE -->
+@if (template === 'UPDATE') {
+  <app-shipping-orders-update></app-shipping-orders-update>
+}

@@ -94,8 +94,28 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "hbc-stores-app:build:production",
+              "serveTarget": "hbc-stores-app:serve:production"
+            },
+            "development": {
+              "buildTarget": "hbc-stores-app:build:development",
+              "serveTarget": "hbc-stores-app:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b963d39f-ebbf-4d56-93ed-bb3cabc101de"
   }
 }

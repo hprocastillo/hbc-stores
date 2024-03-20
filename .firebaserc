@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hbc-logistic": {
+      "hosting": {
+        "hbc-stores-app": [
+          "hbc-stores"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hbc-logistic"
+  }
+}
